@@ -70,7 +70,7 @@ catch (Exception $e) {
     {
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string',
             'image' => 'required|image',//not possible to upload pic more than 2 MB
         ]);
 
@@ -146,8 +146,8 @@ catch (Exception $e) {
     
 
         $request->validate([
-            'name' => 'required',
-            'image' => 'required|image',//not possible to upload pic more than 2 MB
+            'name' => 'required|string',
+            'image' => 'required|image',
         ]);
 
         try {
@@ -201,7 +201,7 @@ catch (Exception $e) {
                     'all_ok' => 'yes',
                     'message' => 'Record is Successfully Updated.',
                     'expense_category' => new ExpenseCategoryResource($expense_category),
-                ], 201);
+                ], 204);
             }
          }
 
@@ -224,4 +224,53 @@ catch (Exception $e) {
 
     }
  }
+
+ public function delete_expense_category($category_id)
+    {
+        try {
+       
+        $expense_category=ExpenseCategory::find($category_id);
+
+        if($expense_category==null){      
+                return response([
+                    'all_ok' => 'no',
+                    'message'=>'Record With This Id is Not Exist.'
+                ], 422);           
+        }else{
+           
+            $img_path=$expense_category->image_url;
+
+            if($img_path){
+                $deleted=unlink($img_path);
+            }
+
+            if($deleted){
+
+            $expense_category->delete();
+            
+            return response([
+                'all_ok' => 'yes',
+                'message' => 'Record is Successfully Deleted.',
+            ], 204);
+
+            } 
+            else{
+                return response([
+                    'all_ok' => 'no',
+                    'message'=>'Not Possible to Deleted.'
+                ], 422); 
+            }
+        }
+
+    }
+    catch (Exception $e) {
+
+        return response([
+            'all_ok' => 'no',
+            'message'=>$e->getMessage()
+        ], 422);    
+
+    }
+ }
+
 }
