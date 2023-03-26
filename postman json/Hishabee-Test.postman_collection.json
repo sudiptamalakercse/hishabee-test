@@ -524,7 +524,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/expenses/''/''/''/''/''/esse/shop rent,house rent/true/true/",
+							"raw": "http://127.0.0.1:8000/api/expenses/''/''/''/''/''/''/''/true/true/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -541,8 +541,8 @@
 								"''",
 								"''",
 								"''",
-								"esse",
-								"shop rent,house rent",
+								"''",
+								"''",
 								"true",
 								"true",
 								""

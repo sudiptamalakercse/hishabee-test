@@ -7,6 +7,7 @@ use App\Models\Expense;
 use App\Http\Resources\ExpenseResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 class ExpenseController extends Controller
 {
@@ -211,21 +212,22 @@ class ExpenseController extends Controller
             } 
 
 
+            if ($expense_category_type != "''") {
 
-           
-           
+                $new_expense_category_type='';
 
-           
-            // if ($search != "''") {
-            //     $expenses=$expenses->whereRelation('expenseCategory', 'name', 'like', '%' . $search . '%');
-            //   }
+                for ($i=1;$i<(strlen($expense_category_type)-1);$i++)
+                {
+                    $new_expense_category_type=$new_expense_category_type.$expense_category_type[$i];
+                }
+        
+                $expense_category_type=explode(",", $new_expense_category_type);
 
-
-            // if ($search != "''") {   
-            //    $expenses=$expenses->whereRelation('paymentType', 'name', 'like', '%' . $search . '%');
-            // }
-
-            
+                $expenses=$expenses->whereRelation('expenseCategory', function (Builder $query)  use ($expense_category_type) {
+                    $query->whereIn('name',  $expense_category_type);
+                });  
+            }
+               
 
            return $expenses->get();
         }
