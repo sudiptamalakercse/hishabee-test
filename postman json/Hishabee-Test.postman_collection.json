@@ -307,6 +307,251 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Expense",
+			"item": [
+				{
+					"name": "add_expense",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "expense_quantity",
+									"value": "500",
+									"type": "default"
+								},
+								{
+									"key": "expense_date",
+									"value": "2023-03-24",
+									"type": "text"
+								},
+								{
+									"key": "expense_category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "payment_type_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/expenses",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_expense",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "expense_quantity",
+									"value": "250",
+									"type": "default"
+								},
+								{
+									"key": "expense_date",
+									"value": "2023-03-24",
+									"type": "text"
+								},
+								{
+									"key": "expense_category_id",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "payment_type_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/expenses/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"expenses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_expense",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "quisokok11",
+									"type": "default"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/Capture---a.PNG"
+								},
+								{
+									"key": " _method",
+									"value": "PUT",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/expenses/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"expenses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_single_expense_record_by_id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/expenses/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"expenses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_expenses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/expenses/''/''/''/''/''/esse/shop rent,house rent/true/true/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"expenses",
+								"''",
+								"''",
+								"''",
+								"''",
+								"''",
+								"esse",
+								"shop rent,house rent",
+								"true",
+								"true",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

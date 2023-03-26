@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\PaymentTypeController;
+use App\Http\Controllers\ExpenseController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +29,12 @@ Route::delete('/expense/categories/{category_id}', [ExpenseCategoryController::c
 //Payment Type
 Route::post('/payment/types', [PaymentTypeController::class, 'create_payment_type']);
 Route::get('/payment/types', [PaymentTypeController::class, 'get_payment_types']);
+
+//expense
+Route::post('/expenses', [ExpenseController::class, 'create_expense']);
+Route::put('/expenses/{expense_id}', [ExpenseController::class, 'update_expense']);
+Route::delete('/expenses/{expense_id}', [ExpenseController::class, 'delete_expense']);
+Route::get('/expenses/{expense_id}', [ExpenseController::class,'get_single_expense_record_by_id']);
+Route::get('/expenses/{day}/{week}/{month}/{year}/{date}/{search}/{expense_category_type}/{date_old_to_new}/{expense_low_to_high}', [ExpenseController::class, 'get_expenses']);
+
+

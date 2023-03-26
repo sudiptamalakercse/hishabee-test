@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2023 at 06:29 PM
+-- Generation Time: Mar 26, 2023 at 06:56 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `expenses` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `expense_quantity` varchar(255) NOT NULL,
+  `expense_date` date NOT NULL,
   `expense_category_id` bigint(20) UNSIGNED NOT NULL,
   `payment_type_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -40,9 +41,17 @@ CREATE TABLE `expenses` (
 -- Dumping data for table `expenses`
 --
 
-INSERT INTO `expenses` (`id`, `expense_quantity`, `expense_category_id`, `payment_type_id`, `created_at`, `updated_at`) VALUES
-(1, '500', 1, 1, NULL, NULL),
-(2, '100', 4, 2, NULL, NULL);
+INSERT INTO `expenses` (`id`, `expense_quantity`, `expense_date`, `expense_category_id`, `payment_type_id`, `created_at`, `updated_at`) VALUES
+(1, '4161', '2023-03-26', 4, 6, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(2, '2785', '2023-03-26', 5, 6, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(3, '4277', '2023-03-26', 1, 6, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(4, '1086', '2023-03-26', 10, 7, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(5, '2608', '2023-03-26', 3, 9, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(6, '3682', '2023-03-26', 1, 5, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(7, '4046', '2023-03-26', 9, 4, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(8, '4432', '2023-03-26', 1, 2, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(9, '8869', '2023-03-26', 1, 3, '2023-03-26 08:02:30', '2023-03-26 08:02:30'),
+(10, '7210', '2023-03-26', 3, 9, '2023-03-26 08:02:30', '2023-03-26 08:02:30');
 
 -- --------------------------------------------------------
 
@@ -63,8 +72,16 @@ CREATE TABLE `expense_categories` (
 --
 
 INSERT INTO `expense_categories` (`id`, `name`, `image_url`, `created_at`, `updated_at`) VALUES
-(1, 'Category1', 'public/images/cnBHe0UbBD0.png', '2023-03-24 10:46:58', '2023-03-24 11:10:19'),
-(4, 'Category2', 'public/images/JP21B1BPzn1.png', '2023-03-24 11:11:03', '2023-03-24 11:11:03');
+(1, 'et', 'https://via.placeholder.com/640x480.png/0055aa?text=sequi', '2023-03-26 08:02:28', '2023-03-26 08:02:28'),
+(2, 'voluptas', 'https://via.placeholder.com/640x480.png/000011?text=possimus', '2023-03-26 08:02:28', '2023-03-26 08:02:28'),
+(3, 'esse', 'https://via.placeholder.com/640x480.png/004477?text=deleniti', '2023-03-26 08:02:28', '2023-03-26 08:02:28'),
+(4, 'maxime', 'https://via.placeholder.com/640x480.png/00aa11?text=libero', '2023-03-26 08:02:28', '2023-03-26 08:02:28'),
+(5, 'vel', 'https://via.placeholder.com/640x480.png/000077?text=qui', '2023-03-26 08:02:28', '2023-03-26 08:02:28'),
+(6, 'dolorum', 'https://via.placeholder.com/640x480.png/0099bb?text=itaque', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(7, 'molestiae', 'https://via.placeholder.com/640x480.png/005511?text=blanditiis', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(8, 'ut', 'https://via.placeholder.com/640x480.png/009999?text=possimus', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(9, 'ex', 'https://via.placeholder.com/640x480.png/006699?text=eos', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(10, 'reiciendis', 'https://via.placeholder.com/640x480.png/0033dd?text=et', '2023-03-26 08:02:29', '2023-03-26 08:02:29');
 
 -- --------------------------------------------------------
 
@@ -137,8 +154,16 @@ CREATE TABLE `payment_types` (
 --
 
 INSERT INTO `payment_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Type1', '2023-03-24 11:01:42', '2023-03-24 11:01:42'),
-(2, 'Type2', '2023-03-24 11:02:08', '2023-03-24 11:02:08');
+(1, 'accusamus', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(2, 'eum', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(3, 'sit', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(4, 'quas', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(5, 'enim', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(6, 'ea', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(7, 'non', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(8, 'quis', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(9, 'alias', '2023-03-26 08:02:29', '2023-03-26 08:02:29'),
+(10, 'delectus', '2023-03-26 08:02:30', '2023-03-26 08:02:30');
 
 -- --------------------------------------------------------
 
@@ -185,7 +210,6 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `expenses`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `expenses_expense_quantity_unique` (`expense_quantity`),
   ADD KEY `expenses_expense_category_id_foreign` (`expense_category_id`),
   ADD KEY `expenses_payment_type_id_foreign` (`payment_type_id`);
 
@@ -246,13 +270,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `expense_categories`
 --
 ALTER TABLE `expense_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -270,7 +294,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payment_types`
 --
 ALTER TABLE `payment_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

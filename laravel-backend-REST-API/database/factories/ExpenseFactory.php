@@ -19,6 +19,7 @@ class ExpenseFactory extends Factory
     {
         return [
             'expense_quantity' => fake()->numberBetween($min = 1000, $max = 9000),
+            'expense_date' => now(),
             'expense_category_id' => ExpenseCategory::inRandomOrder()->first()->id,
             'payment_type_id' => PaymentType::inRandomOrder()->first()->id,
         ];
