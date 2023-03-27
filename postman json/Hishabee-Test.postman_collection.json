@@ -245,7 +245,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Type1",
+									"value": "type4",
 									"type": "default"
 								}
 							]
@@ -327,22 +327,22 @@
 							"formdata": [
 								{
 									"key": "expense_quantity",
-									"value": "500",
+									"value": "200",
 									"type": "default"
 								},
 								{
 									"key": "expense_date",
-									"value": "2023-03-24",
+									"value": "2015-8-15",
 									"type": "text"
 								},
 								{
 									"key": "expense_category_id",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								},
 								{
 									"key": "payment_type_id",
-									"value": "1",
+									"value": "4",
 									"type": "text"
 								}
 							]
@@ -507,9 +507,6 @@
 				},
 				{
 					"name": "get_expenses",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -519,12 +516,8 @@
 								"type": "default"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/expenses/''/''/''/''/''/''/''/true/true/",
+							"raw": "http://127.0.0.1:8000/api/expenses?day=&week=&month=&year=&date=&search=&expense_category_type=&date_old_to_new=&expense_low_to_high=",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -535,17 +528,45 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"expenses",
-								"''",
-								"''",
-								"''",
-								"''",
-								"''",
-								"''",
-								"''",
-								"true",
-								"true",
-								""
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "day",
+									"value": ""
+								},
+								{
+									"key": "week",
+									"value": ""
+								},
+								{
+									"key": "month",
+									"value": ""
+								},
+								{
+									"key": "year",
+									"value": ""
+								},
+								{
+									"key": "date",
+									"value": ""
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "expense_category_type",
+									"value": ""
+								},
+								{
+									"key": "date_old_to_new",
+									"value": ""
+								},
+								{
+									"key": "expense_low_to_high",
+									"value": ""
+								}
 							]
 						}
 					},

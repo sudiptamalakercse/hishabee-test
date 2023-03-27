@@ -163,8 +163,21 @@ class ExpenseController extends Controller
  }
  }
 
- public function get_expenses($day,$week,$month,$year,$date,$search,$expense_category_type,$date_old_to_new,$expense_low_to_high){
-    //dd($day.' '.$month.' '.$year.' '.$date.' '.$search.' '.$expense_category_type.' '.$date_old_to_new.' '.$expense_low_to_high);
+ public function get_expenses(Request $request){
+
+$day= $request->day;
+$week= $request->week;
+$month= $request->month;
+$year= $request->year;
+$date= $request->date;
+$search= $request->search;
+$expense_category_type=$request->expense_category_type;
+$date_old_to_new=$request->date_old_to_new;
+$expense_low_to_high= $request->expense_low_to_high;
+
+
+
+
     try {
          
         if (Expense::count() > 0) {
@@ -173,33 +186,33 @@ class ExpenseController extends Controller
 
             $now = Carbon::now();
 
-            if ($day != "''") {
+            if ($day != null) {
                 $expenses = $expenses->whereDay('expense_date', $now->day);
     
             }
 
-            if ($week != "''") {
+            if ($week != null) {
                 $expenses=$expenses->whereBetween('expense_date', 
                         [$now->startOfWeek()->format('Y-m-d'), $now->endOfWeek()->format('Y-m-d')]
                       );
             }
 
-            if ($month != "''") {
+            if ($month != null) {
                 $expenses = $expenses->whereMonth('expense_date', $now->month);
     
             }
 
-            if ($year != "''") {
+            if ($year != null) {
                 $expenses = $expenses->whereYear('expense_date', $now->year);
     
             }
 
-            if ($date != "''") {
+            if ($date != null) {
                 $expenses = $expenses->whereDate('expense_date', $date);
     
             }
 
-            if ($search != "''") {
+            if ($search != null) {
                 $expenses=$expenses
                 ->where('expense_quantity','LIKE','%'.$search.'%')
                 ->orWhere('expense_date','LIKE','%'.$search.'%')
@@ -212,8 +225,8 @@ class ExpenseController extends Controller
             } 
 
 
-            if ($expense_category_type != "''") {
-
+            if ($expense_category_type != null) {
+                
                 $new_expense_category_type='';
 
                 for ($i=1;$i<(strlen($expense_category_type)-1);$i++)
@@ -227,9 +240,42 @@ class ExpenseController extends Controller
                     $query->whereIn('name',  $expense_category_type);
                 });  
             }
-               
 
-           return $expenses->get();
+
+            if ($date_old_to_new == 'true') {
+                $expenses=$expenses->orderBy('created_at', 'asc');
+            }
+            else if ($date_old_to_new == 'false'){
+                $expenses=$expenses->orderBy('created_at', 'desc');
+            }
+            else if ($expense_low_to_high == 'true'){
+                $expenses=$expenses->orderBy('expense_quantity', 'asc');
+            }
+            else if ($expense_low_to_high == 'false'){
+                $expenses=$expenses->orderBy('expense_quantity', 'desc');
+            }
+            else {
+                $expenses=$expenses->orderBy('created_at', 'asc');
+            }
+            
+            $expenses2=$expenses;
+
+            $total_expense_quantity=$expenses2->sum('expense_quantity');
+            
+            $expenses=$expenses->simplePaginate(2); 
+
+            $expenses=$expenses->appends($request->all());
+
+            $expenses=ExpenseResource::collection($expenses);
+
+            $expenses=$expenses->additional([
+                'all_ok' => 'yes',
+                'total_expense_quantity' => $total_expense_quantity,
+                'message'=>'Record is Retrieved Successfully.'
+            ]);
+
+            return $expenses;
+
         }
         else {
 

@@ -35,6 +35,6 @@ Route::post('/expenses', [ExpenseController::class, 'create_expense']);
 Route::put('/expenses/{expense_id}', [ExpenseController::class, 'update_expense']);
 Route::delete('/expenses/{expense_id}', [ExpenseController::class, 'delete_expense']);
 Route::get('/expenses/{expense_id}', [ExpenseController::class,'get_single_expense_record_by_id']);
-Route::get('/expenses/{day}/{week}/{month}/{year}/{date}/{search}/{expense_category_type}/{date_old_to_new}/{expense_low_to_high}', [ExpenseController::class, 'get_expenses']);
+Route::get('/expenses', [ExpenseController::class, 'get_expenses']);
 
 
